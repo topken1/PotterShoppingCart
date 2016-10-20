@@ -20,14 +20,15 @@ namespace PotterShoppingCart.Tests
                 ISBN = "9573317249"
             };
 
-            shoppingCart.Add(product, 1);
-
             var expected = 100;
             // act
+            shoppingCart.Add(product, 1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
             Assert.AreEqual(expected, actual);
         }
+
+
     }
 }

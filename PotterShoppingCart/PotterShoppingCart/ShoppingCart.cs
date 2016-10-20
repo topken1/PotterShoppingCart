@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Linq;
 namespace PotterShoppingCart
 {
     /// <summary>
@@ -7,6 +8,8 @@ namespace PotterShoppingCart
     /// </summary>
     public class ShoppingCart
     {
+        private List<Item> _items = new List<Item>();
+
         /// <summary>
         /// Gets or sets the total fee.
         /// </summary>
@@ -21,9 +24,17 @@ namespace PotterShoppingCart
         /// <param name="product">The product.</param>
         /// <param name="number">The number.</param>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void Add(Product product, int number)
+        public void Add(Product product, int quantity)
         {
-            throw new NotImplementedException();
+            var item = _items.Where(i => i.Product.ID == product.ID).FirstOrDefault();
+            if (item == null)
+            {
+                this._items.Add(new Item() { Product = product, Quantity = quantity });
+            }
+            else
+            {
+                item.Quantity += quantity;
+            }
         }
 
         /// <summary>
@@ -32,7 +43,25 @@ namespace PotterShoppingCart
         /// <exception cref="System.NotImplementedException"></exception>
         public void Checkout()
         {
-            throw new NotImplementedException();
+            this.TotalFee = this._items.Sum(i => i.Product.Price * i.Quantity);
         }
+    }
+
+    public class Item
+    {
+        /// <summary>
+        /// Gets or sets the product.
+        /// </summary>
+        /// <value>
+        /// The product.
+        /// </value>
+        internal Product Product { get; set; }
+        /// <summary>
+        /// Gets or sets the quantity.
+        /// </summary>
+        /// <value>
+        /// The quantity.
+        /// </value>
+        internal int Quantity { get; set; }
     }
 }
