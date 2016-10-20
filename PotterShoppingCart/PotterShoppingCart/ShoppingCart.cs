@@ -8,7 +8,16 @@ namespace PotterShoppingCart
     /// </summary>
     public class ShoppingCart
     {
+        public ShoppingCart()
+        {
+
+        }
+        public ShoppingCart(IProductDao productdao)
+        {
+            this._productdao = productdao;
+        }
         private List<Item> _items = new List<Item>();
+        private IProductDao _productdao;
 
         /// <summary>
         /// Gets or sets the total fee.
@@ -24,8 +33,9 @@ namespace PotterShoppingCart
         /// <param name="product">The product.</param>
         /// <param name="number">The number.</param>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void Add(Product product, int quantity)
+        public void Add(int ID, int quantity)
         {
+            var product = _productdao.GetProduct(ID);
             var item = _items.Where(i => i.Product.ID == product.ID).FirstOrDefault();
             if (item == null)
             {
