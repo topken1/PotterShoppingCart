@@ -70,6 +70,8 @@ namespace PotterShoppingCart
                     return 0.95;
                 case 3:
                     return 0.9;
+                case 4:
+                    return 0.8;
                 case 1:
                 default:
                     return 1;
