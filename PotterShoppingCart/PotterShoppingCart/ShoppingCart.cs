@@ -17,6 +17,7 @@ namespace PotterShoppingCart
             this._productdao = productdao;
         }
         private List<Item> _items = new List<Item>();
+
         private IProductDao _productdao;
 
         /// <summary>
@@ -53,30 +54,18 @@ namespace PotterShoppingCart
         /// <exception cref="System.NotImplementedException"></exception>
         public void Checkout()
         {
-            double discount = GetDiscount();
-            this.TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * discount);
+            double discount = this._discountDictionary[_items.Count];
+            TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * discount);
         }
 
-        /// <summary>
-        /// Gets the discount.
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        private double GetDiscount()
+        private IDictionary<int, double> _discountDictionary = new Dictionary<int, double>()
         {
-            switch (_items.Count)
-            {
-                case 2:
-                    return 0.95;
-                case 3:
-                    return 0.9;
-                case 4:
-                    return 0.8;
-                case 1:
-                default:
-                    return 1;
-            }
-        }
+            { 1, 1 },
+            { 2, 0.95 },
+            { 3, 0.9 },
+            { 4, 0.8 }
+        };
+       
     }
 
     public class Item
