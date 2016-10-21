@@ -39,5 +39,21 @@ namespace PotterShoppingCart.Tests
             int actual = shoppingCart.TotalFee;
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Test_Buy_1xEP1_1xEP2_1xEP3_TotalFee_Should_be_270()
+        {
+            // arrange
+            ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
+            var expected = 270;
+            // act
+            shoppingCart.Add(1, 1);
+            shoppingCart.Add(2, 1);
+            shoppingCart.Add(2, 1);
+            shoppingCart.Checkout();
+            // assert
+            int actual = shoppingCart.TotalFee;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
