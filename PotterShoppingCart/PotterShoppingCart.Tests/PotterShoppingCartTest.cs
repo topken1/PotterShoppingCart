@@ -15,7 +15,7 @@ namespace PotterShoppingCart.Tests
             //var product = productdao.GetProduct(1);
             var expected = 100;
             // act
-            shoppingCart.Add(1, 1);
+            shoppingCart.Add(ID:1, quantity:1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -32,8 +32,8 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 190;
             // act
-            shoppingCart.Add(1, 1);
-            shoppingCart.Add(2, 1);
+            shoppingCart.Add(ID: 1, quantity: 1);
+            shoppingCart.Add(ID: 2, quantity: 1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -47,9 +47,9 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 270;
             // act
-            shoppingCart.Add(1, 1);
-            shoppingCart.Add(2, 1);
-            shoppingCart.Add(2, 1);
+            shoppingCart.Add(ID: 1, quantity: 1);
+            shoppingCart.Add(ID: 2, quantity: 1);
+            shoppingCart.Add(ID: 3, quantity: 1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;

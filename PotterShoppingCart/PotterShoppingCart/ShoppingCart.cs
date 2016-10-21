@@ -61,6 +61,9 @@ namespace PotterShoppingCart
                 case 2:
                     this.TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * 0.95);
                     break;
+                case 3:
+                    this.TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * 0.9);
+                    break;
                 default:
                     break;
             }
