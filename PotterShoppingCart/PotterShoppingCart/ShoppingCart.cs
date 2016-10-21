@@ -54,8 +54,11 @@ namespace PotterShoppingCart
         /// <exception cref="System.NotImplementedException"></exception>
         public void Checkout()
         {
+            int minQuantity = _items.Min(i => i.Quantity);
             double discount = this._discountDictionary[_items.Count];
-            TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * discount);
+            TotalFee = (int)(_items.Sum(i => i.Product.Price * minQuantity) * discount);
+            TotalFee += _items.Where(i => i.Quantity > minQuantity)
+                .Sum(s => s.Product.Price * (s.Quantity - minQuantity));
         }
 
         private IDictionary<int, double> _discountDictionary = new Dictionary<int, double>()
