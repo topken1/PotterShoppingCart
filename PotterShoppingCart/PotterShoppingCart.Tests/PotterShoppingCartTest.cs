@@ -74,7 +74,7 @@ namespace PotterShoppingCart.Tests
         }
 
         [TestMethod]
-        public void Test_By_EachOne_TotalFee_Should_Be_375()
+        public void Test_Buy_EachOne_TotalFee_Should_Be_375()
         {
             // arrange
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
@@ -85,6 +85,22 @@ namespace PotterShoppingCart.Tests
             shoppingCart.Add(ID: 3, quantity: 1);
             shoppingCart.Add(ID: 4, quantity: 1);
             shoppingCart.Add(ID: 5, quantity: 1);
+            shoppingCart.Checkout();
+            // assert
+            int actual = shoppingCart.TotalFee;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Test_Buy_1xEP1_1xEP2_2xEP3_TotalFee_Should_Be_460()
+        {
+            // arrange
+            ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
+            var expected = 460;
+            // act
+            shoppingCart.Add(ID: 1, quantity: 1);
+            shoppingCart.Add(ID: 2, quantity: 1);
+            shoppingCart.Add(ID: 3, quantity: 2);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
