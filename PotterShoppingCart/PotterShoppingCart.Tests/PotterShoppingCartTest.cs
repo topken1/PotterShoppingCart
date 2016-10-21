@@ -78,7 +78,7 @@ namespace PotterShoppingCart.Tests
         {
             // arrange
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
-            var expected = 320;
+            var expected = 375;
             // act
             shoppingCart.Add(ID: 1, quantity: 1);
             shoppingCart.Add(ID: 2, quantity: 1);
