@@ -53,14 +53,18 @@ namespace PotterShoppingCart
         /// <exception cref="System.NotImplementedException"></exception>
         public void Checkout()
         {
-            if (_items.Count == 2)
-            { 
-                this.TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * 0.95);
-            }
-            else
+            switch (_items.Count)
             {
-                this.TotalFee = _items.Sum(i => i.Product.Price * i.Quantity);
+                case 1:
+                    this.TotalFee = _items.Sum(i => i.Product.Price * i.Quantity);
+                    break;
+                case 2:
+                    this.TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * 0.95);
+                    break;
+                default:
+                    break;
             }
+
             
         }
     }
