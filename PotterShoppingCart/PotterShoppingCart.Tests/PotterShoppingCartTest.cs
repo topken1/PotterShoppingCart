@@ -115,7 +115,7 @@ namespace PotterShoppingCart.Tests
             var expected = 460;
             // act
             shoppingCart.Add(ID: 1, quantity: 1);
-            shoppingCart.Add(ID: 2, quantity: 1);
+            shoppingCart.Add(ID: 2, quantity: 2);
             shoppingCart.Add(ID: 3, quantity: 2);
             shoppingCart.Checkout();
             // assert
