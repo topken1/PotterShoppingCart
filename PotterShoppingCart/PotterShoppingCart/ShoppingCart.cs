@@ -57,8 +57,13 @@ namespace PotterShoppingCart
             int minQuantity = _items.Min(i => i.Quantity);
             double discount = this._discountDictionary[_items.Count];
             TotalFee = (int)(_items.Sum(i => i.Product.Price * minQuantity) * discount);
-            TotalFee += _items.Where(i => i.Quantity > minQuantity)
-                .Sum(s => s.Product.Price * (s.Quantity - minQuantity));
+
+            var unSumItems = _items.Select(x => { x.Quantity -= minQuantity; return x; }).Where( o=>o.Quantity >0).ToList();
+            if (unSumItems.Count() > 0)
+            {
+                double unSumDiscount = this._discountDictionary[unSumItems.Count()];
+                TotalFee += (int)(unSumItems.Sum(i => i.Product.Price * minQuantity) * unSumDiscount);
+            }
         }
 
         private IDictionary<int, double> _discountDictionary = new Dictionary<int, double>()
