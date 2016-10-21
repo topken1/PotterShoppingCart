@@ -53,22 +53,27 @@ namespace PotterShoppingCart
         /// <exception cref="System.NotImplementedException"></exception>
         public void Checkout()
         {
+            double discount = GetDiscount();
+            this.TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * discount);
+        }
+
+        /// <summary>
+        /// Gets the discount.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private double GetDiscount()
+        {
             switch (_items.Count)
             {
-                case 1:
-                    this.TotalFee = _items.Sum(i => i.Product.Price * i.Quantity);
-                    break;
                 case 2:
-                    this.TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * 0.95);
-                    break;
+                    return 0.95;
                 case 3:
-                    this.TotalFee = (int)(_items.Sum(i => i.Product.Price * i.Quantity) * 0.9);
-                    break;
+                    return 0.9;
+                case 1:
                 default:
-                    break;
+                    return 1;
             }
-
-            
         }
     }
 
