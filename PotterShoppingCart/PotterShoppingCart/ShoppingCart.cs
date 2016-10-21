@@ -54,16 +54,31 @@ namespace PotterShoppingCart
         /// <exception cref="System.NotImplementedException"></exception>
         public void Checkout()
         {
+            //int minQuantity = _items.Min(i => i.Quantity);
+            //double discount = this._discountDictionary[_items.Count];
+            //TotalFee = (int)(_items.Sum(i => i.Product.Price * minQuantity) * discount);
+
+            //var unSumItems = _items.Select(x => { x.Quantity -= minQuantity; return x; }).Where( o=>o.Quantity >0).ToList();
+            //if (unSumItems.Count > 0)
+            //{
+            //    double unSumDiscount = this._discountDictionary[unSumItems.Count()];
+            //    TotalFee += (int)(unSumItems.Sum(i => i.Product.Price * minQuantity) * unSumDiscount);
+            //}
+
+            TotalFee += Checkout(_items);
+        }
+
+        private int Checkout(List<Item> _items)
+        {
             int minQuantity = _items.Min(i => i.Quantity);
             double discount = this._discountDictionary[_items.Count];
-            TotalFee = (int)(_items.Sum(i => i.Product.Price * minQuantity) * discount);
-
-            var unSumItems = _items.Select(x => { x.Quantity -= minQuantity; return x; }).Where( o=>o.Quantity >0).ToList();
-            if (unSumItems.Count() > 0)
+            int totoalFee = (int)(_items.Sum(i => i.Product.Price * minQuantity) * discount);
+            var unSumItems = _items.Select(x => { x.Quantity -= minQuantity; return x; }).Where(o => o.Quantity > 0).ToList();
+            if(unSumItems.Count > 0)
             {
-                double unSumDiscount = this._discountDictionary[unSumItems.Count()];
-                TotalFee += (int)(unSumItems.Sum(i => i.Product.Price * minQuantity) * unSumDiscount);
+                totoalFee += Checkout(unSumItems);
             }
+            return totoalFee;
         }
 
         private IDictionary<int, double> _discountDictionary = new Dictionary<int, double>()

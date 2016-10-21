@@ -15,7 +15,7 @@ namespace PotterShoppingCart.Tests
             //var product = productdao.GetProduct(1);
             var expected = 100;
             // act
-            shoppingCart.Add(ID:1, quantity:1);
+            shoppingCart.Add(ID: 1, quantity: 1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
