@@ -75,12 +75,18 @@ namespace PotterShoppingCart
         /// <returns></returns>
         private int DiscountedItem(List<SaleItem> _items)
         {
+            // 取出項目中數量最小的量
             int minQuantity = _items.Min(i => i.Quantity);
+            // 取出可以打折的折扣數 (先把最大範圍的折扣計數掉)
             double discount = this._discountDictionary[_items.Count];
+            // { 5, 1 ,1 ,1 ,1 } ==>  Discounted { 1, 1, 1, 1, 1} 
+            // { 5, 4 ,4, 4, 4 } ==>  Discounted { 4, 4, 4, 4, 4}
             int totoalFee = (int)(_items.Sum(i => i.Product.Price * minQuantity) * discount);
+            // 取出未處理的項目
             var unSumItems = _items.Select(x => { x.Quantity -= minQuantity; return x; }).Where(o => o.Quantity > 0).ToList();
             if(unSumItems.Count > 0)
             {
+                // 計算尚未折扣的項目費用
                 totoalFee += DiscountedItem(unSumItems);
             }
             return totoalFee;
