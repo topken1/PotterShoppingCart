@@ -2,6 +2,6 @@
 {
     public interface IProductDao
     {
-        Product GetProduct(int ID);
+        Product GetProduct(int id);
     }
 }

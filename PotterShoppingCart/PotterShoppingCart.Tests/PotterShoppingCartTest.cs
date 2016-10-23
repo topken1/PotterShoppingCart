@@ -15,7 +15,7 @@ namespace PotterShoppingCart.Tests
             //var product = productdao.GetProduct(1);
             var expected = 100;
             // act
-            shoppingCart.Add(ID: 1, quantity: 1);
+            shoppingCart.Add(id: 1, quantity: 1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -32,8 +32,8 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 190;
             // act
-            shoppingCart.Add(ID: 1, quantity: 1);
-            shoppingCart.Add(ID: 2, quantity: 1);
+            shoppingCart.Add(id: 1, quantity: 1);
+            shoppingCart.Add(id: 2, quantity: 1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -47,9 +47,9 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 270;
             // act
-            shoppingCart.Add(ID: 1, quantity: 1);
-            shoppingCart.Add(ID: 2, quantity: 1);
-            shoppingCart.Add(ID: 3, quantity: 1);
+            shoppingCart.Add(id: 1, quantity: 1);
+            shoppingCart.Add(id: 2, quantity: 1);
+            shoppingCart.Add(id: 3, quantity: 1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -63,10 +63,10 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 320;
             // act
-            shoppingCart.Add(ID: 1, quantity: 1);
-            shoppingCart.Add(ID: 2, quantity: 1);
-            shoppingCart.Add(ID: 3, quantity: 1);
-            shoppingCart.Add(ID: 4, quantity: 1);
+            shoppingCart.Add(id: 1, quantity: 1);
+            shoppingCart.Add(id: 2, quantity: 1);
+            shoppingCart.Add(id: 3, quantity: 1);
+            shoppingCart.Add(id: 4, quantity: 1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -80,11 +80,11 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 375;
             // act
-            shoppingCart.Add(ID: 1, quantity: 1);
-            shoppingCart.Add(ID: 2, quantity: 1);
-            shoppingCart.Add(ID: 3, quantity: 1);
-            shoppingCart.Add(ID: 4, quantity: 1);
-            shoppingCart.Add(ID: 5, quantity: 1);
+            shoppingCart.Add(id: 1, quantity: 1);
+            shoppingCart.Add(id: 2, quantity: 1);
+            shoppingCart.Add(id: 3, quantity: 1);
+            shoppingCart.Add(id: 4, quantity: 1);
+            shoppingCart.Add(id: 5, quantity: 1);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -98,9 +98,9 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 370;
             // act
-            shoppingCart.Add(ID: 1, quantity: 1);
-            shoppingCart.Add(ID: 2, quantity: 1);
-            shoppingCart.Add(ID: 3, quantity: 2);
+            shoppingCart.Add(id: 1, quantity: 1);
+            shoppingCart.Add(id: 2, quantity: 1);
+            shoppingCart.Add(id: 3, quantity: 2);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -114,9 +114,9 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 460;
             // act
-            shoppingCart.Add(ID: 1, quantity: 1);
-            shoppingCart.Add(ID: 2, quantity: 2);
-            shoppingCart.Add(ID: 3, quantity: 2);
+            shoppingCart.Add(id: 1, quantity: 1);
+            shoppingCart.Add(id: 2, quantity: 2);
+            shoppingCart.Add(id: 3, quantity: 2);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -131,9 +131,9 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 560;
             // act
-            shoppingCart.Add(ID: 1, quantity: 1);
-            shoppingCart.Add(ID: 2, quantity: 2);
-            shoppingCart.Add(ID: 3, quantity: 3);
+            shoppingCart.Add(id: 1, quantity: 1);
+            shoppingCart.Add(id: 2, quantity: 2);
+            shoppingCart.Add(id: 3, quantity: 3);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;
@@ -147,11 +147,11 @@ namespace PotterShoppingCart.Tests
             ShoppingCart shoppingCart = new ShoppingCart(new ProductDao());
             var expected = 1255;
             // act
-            shoppingCart.Add(ID: 1, quantity: 1);
-            shoppingCart.Add(ID: 2, quantity: 2);
-            shoppingCart.Add(ID: 3, quantity: 3);
-            shoppingCart.Add(ID: 4, quantity: 4);
-            shoppingCart.Add(ID: 5, quantity: 5);
+            shoppingCart.Add(id: 1, quantity: 1);
+            shoppingCart.Add(id: 2, quantity: 2);
+            shoppingCart.Add(id: 3, quantity: 3);
+            shoppingCart.Add(id: 4, quantity: 4);
+            shoppingCart.Add(id: 5, quantity: 5);
             shoppingCart.Checkout();
             // assert
             int actual = shoppingCart.TotalFee;

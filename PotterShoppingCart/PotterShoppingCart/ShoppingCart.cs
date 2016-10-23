@@ -16,7 +16,7 @@ namespace PotterShoppingCart
         {
             this._productdao = productdao;
         }
-        private List<Item> _items = new List<Item>();
+        private List<SaleItem> _saleitems = new List<SaleItem>();
 
         private IProductDao _productdao;
 
@@ -34,13 +34,13 @@ namespace PotterShoppingCart
         /// <param name="product">The product.</param>
         /// <param name="number">The number.</param>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void Add(int ID, int quantity)
+        public void Add(int id, int quantity)
         {
-            var product = _productdao.GetProduct(ID);
-            var item = _items.Where(i => i.Product.ID == product.ID).FirstOrDefault();
+            var product = _productdao.GetProduct(id);
+            var item = _saleitems.Where(i => i.Product.ID == product.ID).FirstOrDefault();
             if (item == null)
             {
-                this._items.Add(new Item() { Product = product, Quantity = quantity });
+                this._saleitems.Add(new SaleItem() { Product = product, Quantity = quantity });
             }
             else
             {
@@ -65,10 +65,10 @@ namespace PotterShoppingCart
             //    TotalFee += (int)(unSumItems.Sum(i => i.Product.Price * minQuantity) * unSumDiscount);
             //}
 
-            TotalFee += Checkout(_items);
+            TotalFee += Checkout(_saleitems);
         }
 
-        private int Checkout(List<Item> _items)
+        private int Checkout(List<SaleItem> _items)
         {
             int minQuantity = _items.Min(i => i.Quantity);
             double discount = this._discountDictionary[_items.Count];
@@ -92,7 +92,7 @@ namespace PotterShoppingCart
        
     }
 
-    public class Item
+    public class SaleItem
     {
         /// <summary>
         /// Gets or sets the product.

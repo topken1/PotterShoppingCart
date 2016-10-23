@@ -8,9 +8,9 @@ namespace PotterShoppingCart
         {
         }
 
-        public Product GetProduct(int ID)
+        public Product GetProduct(int id)
         {
-            switch (ID)
+            switch (id)
             {
                 case 1:
                     return new Product()
